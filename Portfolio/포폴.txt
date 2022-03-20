@@ -1,0 +1,15 @@
+포켓몬스터 레드
+
+아직 모름()
+
+Intro->title->play->end
+
+Intro
+GameEngineActor 위치를 가지는 눈에 보이는거 전부
+(음악재생)
+
+....player..
+
+
+title
+GameEngineAcotr 
