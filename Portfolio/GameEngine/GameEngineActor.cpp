@@ -21,3 +21,11 @@ void GameEngineActor::DebugRectRender()
 		DebugRect.CenterBot()
 	);
 }
+GameEngineRenderer* CreateRenderer(const std::string& _Image,
+	RenderPivot _PivotType,/*=RenderPivot::CENTER 네모칸 기준 센터 위*/
+	const float4& _PivotPos/*={0,0}*/
+)
+{
+	
+	return;
+}

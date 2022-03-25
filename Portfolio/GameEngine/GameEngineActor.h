@@ -1,10 +1,14 @@
 #pragma once
 #include <GameEngineBase/GameEngineMath.h>
 #include <GameEngineBase/GameEngineNameObject.h>
+#include "GameEngineEnum.h"
+#include <list>
 // 설명 :
+class GameEngineRenderer;
 class GameEngineLevel;
 class GameEngineActor:public GameEngineNameObject
 {
+/////ActorBase
 public:
 	friend GameEngineLevel;
 	// constrcuter destructer
@@ -51,5 +55,17 @@ private:
 	{
 		Level_ = _Level;
 	}
+	///////////////////////////////////////Render
+	//GameEngineRenderer vs GameEngineRenderer*
+	//가장 이득을 보는건 벡터의 값
+	//가장 빠르다.
+
+public:
+	std::list<GameEngineRenderer*>RenderList_;
+	GameEngineRenderer* CreateRenderer(const std::string& _Image,
+		RenderPivot _PivotType,/*=RenderPivot::CENTER 네모칸 기준 센터 위*/
+		const float4& _PivotPos/*={0,0}*/
+	);
+
 };
 

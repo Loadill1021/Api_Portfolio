@@ -156,6 +156,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameEngineEnum.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="GameEngine.h">
       <SubType>
       </SubType>
@@ -173,6 +177,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="GameEngineLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="GameEngineRenderer.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -195,6 +203,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="GameEngineLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GameEngineRenderer.cpp">
       <SubType>
       </SubType>
     </ClCompile>
