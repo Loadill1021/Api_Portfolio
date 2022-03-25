@@ -27,11 +27,15 @@ public:
 		delete Inst_;
 		Inst_ = nullptr;
 	}
+	GameEngineImage* Find(const std::string& _Name);
 
-	GameEngineImage* Create(const std::string& _Name, float4 _Scale);
-
+	GameEngineImage* Create(const std::string& _Name, const float4& _Scale);
 	GameEngineImage* Create(const std::string& _Name, HDC _DC);
 
+	//경로와 이름
+	GameEngineImage* Load(const std::string _Path) { return nullptr; }
+	GameEngineImage* Load(const std::string& _Path, const std::string& _Name);
+	
 private:
 	// constrcuter destructer
 	GameEngineImageManager();

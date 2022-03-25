@@ -81,18 +81,46 @@ void GameEngineImage::BitCopy(GameEngineImage* _Other)
 }
 
 // 다른 이미지가 들어와서
-void GameEngineImage::BitCopy(GameEngineImage* _Other, const float4& _CopyPos, const float4& _OtherPivot, const float4& _OtherPivotScale)
+void GameEngineImage::BitCopy(GameEngineImage* _Other, const float4& _CopyPos, const float4& _CopyScale, const float4& _OtherPivot)
 {
 	// 윈도우에서 지원해주는 일반적인 dc vs dc의 복사함수입니다.
 	BitBlt(
 		ImageDC_, // 여기에 복사해라.
 		_CopyPos.ix(), // 내 이미지의 이 부분 x
 		_CopyPos.iy(), // 내 이미지의 이 부분 y 에 복사해라
-		_OtherPivotScale.ix(), // 내 이미지의 이 크기만큼 x
-		_OtherPivotScale.iy(), // 내 이미지의 이 크기만큼 y
+		_CopyScale.ix(), // 내 이미지의 이 크기만큼 x
+		_CopyScale.iy(), // 내 이미지의 이 크기만큼 y
 		_Other->ImageDC_, // 복사하려는 대상은
 		_OtherPivot.ix(), // 복사하려는 대상의 시작점X
 		_OtherPivot.iy(),// 복사하려는 대상의 시작점Y
 		SRCCOPY // 복사하라는 명령
 	);
+}
+bool GameEngineImage::Load(const std::string& _Path)
+{
+	//비트맵이 채워져 있어야 ImageDC_로 들어간다
+	BitMap_ = static_cast<HBITMAP>(LoadImageA(
+		nullptr,
+		_Path.c_str(),
+		IMAGE_BITMAP,
+		0,
+		0,
+		LR_LOADFROMFILE
+	));
+	if (nullptr == BitMap_)
+	{
+		MsgBoxAssertString(_Path+"이미지 로드에 실패했습니다. 여러분들이 살펴봐야할 문제 1.경로는 제대로 됐나요?");
+	}
+	ImageDC_ = CreateCompatibleDC(nullptr);
+
+	if (nullptr == ImageDC_)
+	{
+		MsgBoxAssert("ImageDc 생성에 실패했습니다.");
+	}
+
+	OldBitMap_ = (HBITMAP)SelectObject(ImageDC_, BitMap_);
+
+	ImageScaleCheck();
+
+	return true;
 }
