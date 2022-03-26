@@ -2,12 +2,28 @@
 #include "GameEngineImageManager.h"
 #include "GameEngineBase/GameEngineDebug.h"
 #include "GameEngine.h"
-GameEngineRenderer::GameEngineRenderer() 
+
+#pragma comment(lib,"msimg32.lib")
+GameEngineRenderer::GameEngineRenderer()
+	:Image_(nullptr)
+	,PivotType_(RenderPivot::CENTER)
+	,ScaleMode_(RenderScaleMode::Image)
+	,TransColor_(RGB(255,0,255))//마젠타
+	,RenderImagePivot_({0,0})
 {
+	
 }
 
 GameEngineRenderer::~GameEngineRenderer() 
 {
+}
+void SetImageScale(const std::string& _Name)
+{
+
+}
+void GameEngineRenderer::SetImageScale()
+{
+
 }
 void GameEngineRenderer::SetImage(const std::string& _Name)
 {
@@ -23,5 +39,26 @@ void GameEngineRenderer::SetImage(const std::string& _Name)
 
 void GameEngineRenderer::Render()
 {
-	GameEngine::BackBufferImage()->BitCopyBot(RenderPivot::,)
+	if (nullptr == Image_)
+	{
+		MsgBoxAssert("랜더러에 이미지가 세팅되어 있지 않으면 랜더링이 안됩니다.");
+		return;
+	}
+	//액터의 위치+그리는 방식
+	float4 RenderPos = GetActor()->GetPosition() + RenderPivot_;
+	//랜더러를 가지고 있는 엑터의 위치
+	switch (PivotType_)
+	{
+	case RenderPivot::CENTER:
+		GameEngine::BackBufferImage()->TransCopy(Image_, RenderPos - RenderScale_.Half(), RenderScale_, RenderImagePivot_, RenderImageScale_, TransColor_);
+	case RenderPivot::BOT:
+		//GameEngine::BackBufferImage()->TransCopy(Image_, RenderPos, RenderScale, TransColor_);
+		break;
+	default:
+		break;
+	}
+}
+void GameEngineRenderer::SetIndex(size_t _Index)
+{
+	if(false==Image_->)
 }

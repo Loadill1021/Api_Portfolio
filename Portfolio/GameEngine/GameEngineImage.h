@@ -2,7 +2,7 @@
 #include <GameEngineBase/GameEngineNameObject.h>
 #include <GameEngineBase/GameEngineMath.h>
 #include <Windows.h>
-
+#include <vector>
 // Ό³Έν :
 class GameEngineImage : public GameEngineNameObject
 {
@@ -58,6 +58,27 @@ public:
 		const float4& _CopyScale,
 		const float4& _OtherPivot, const float4& _OtherScale, unsigned int _TransColor);
 
+	void Cut(const float4& _CutSize);
+
+	bool IsCut()
+	{
+		return 0 != CutPivot_.size();
+	}
+	float4 GetCutPivot(size_t _Index)
+	{
+		return CutPivot_[_Index];
+	}
+	float4 GetCutScale(size_t _Index)
+	{
+		return CutScale_[_Index];
+	}
+	void Cut(const float4& _CutScale, const float4& _CutPos)
+	{
+		CutPivot_.push_back(_CutPos);
+		CutScale_.push_back(_CutScale);
+	}
+
+
 protected:
 
 
@@ -67,6 +88,10 @@ private:
 	HBITMAP OldBitMap_;
 	BITMAP Info_;
 
+
+	//?
+	std::vector<float4>CutPivot_;
+	std::vector<float4>CutScale_;
 	void ImageScaleCheck();
 };
 

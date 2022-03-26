@@ -59,7 +59,13 @@ private:
 	//GameEngineRenderer vs GameEngineRenderer*
 	//가장 이득을 보는건 벡터의 값
 	//가장 빠르다.
+public:
 
+	GameEngineRenderer* CreateRendererToScale(
+		const std::string& _Image, 
+		const float4& _Scale, 
+		RenderPivot _PivotType = RenderPivot::CENTER, 
+		const float4& _PivotPos = { 0,0 });
 public:
 	std::list<GameEngineRenderer*>RenderList_;
 	GameEngineRenderer* CreateRenderer(const std::string& _Image,

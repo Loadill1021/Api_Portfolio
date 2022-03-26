@@ -34,5 +34,8 @@
     <Filter Include="Actor\IntroActor">
       <UniqueIdentifier>{aa6a6de2-7fa1-4d35-800a-4c9cf6d0dd8b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Global">
+      <UniqueIdentifier>{38de4c7c-5322-42aa-8b68-493bf5f13c4a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>
