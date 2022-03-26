@@ -33,6 +33,10 @@ public:
 	{
 		Scale_ = _Value;
 	}
+	inline void SetMove(float4 _Value)
+	{
+		Position_ += _Value;
+	}
 
 protected:
 	// 시작할때 뭔가를 하고 싶은데 생성자에서는 절대로 못할 부분들을 처리한다.
