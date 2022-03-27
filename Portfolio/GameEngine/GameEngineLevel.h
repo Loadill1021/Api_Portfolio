@@ -31,7 +31,7 @@ protected:
 	virtual void LevelChangeEnd(){}
 
 	template<typename ActorType>
-	ActorType* CreateActor(const std::string& _Name, int _Order)
+	ActorType* CreateActor(int _Order=0,const std::string& _Name="")
 	{
 		ActorType* NewActor = new ActorType();
 		GameEngineActor* StartActor = NewActor;

@@ -12,6 +12,15 @@ public:
 			_Text[i] = std::toupper(_Text[i]);
 		}
 	}
+	static std::string ToUpperReturn(const std::string& _Text)
+	{
+		std::string NewText = _Text;
+		for (size_t i = 0; i < _Text.size(); i++)
+		{
+			NewText[i] = std::toupper(NewText[i]);
+		}
+		return NewText;
+	}
 protected:
 
 private:

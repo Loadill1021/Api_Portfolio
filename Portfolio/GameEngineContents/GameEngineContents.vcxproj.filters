@@ -2,40 +2,17 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="PoketMonster.h" />
-    <ClInclude Include="IntroLevel.h">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleLevel.h">
-      <Filter>Level</Filter>
-    </ClInclude>
-    <ClInclude Include="IntroBackground.h">
-      <Filter>Actor\IntroActor</Filter>
-    </ClInclude>
+    <ClInclude Include="BattleLevel.h" />
+    <ClInclude Include="IntroBackground.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PoketMonster.cpp" />
-    <ClCompile Include="IntroLevel.cpp">
-      <Filter>Level</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleLevel.cpp">
-      <Filter>Level</Filter>
-    </ClCompile>
-    <ClCompile Include="IntroBackground.cpp">
-      <Filter>Actor\IntroActor</Filter>
-    </ClCompile>
+    <ClCompile Include="BattleLevel.cpp" />
+    <ClCompile Include="IntroBackground.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Level">
-      <UniqueIdentifier>{db371467-026f-427f-83d1-dc57f7268226}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Actor">
-      <UniqueIdentifier>{02782aed-f2af-4bf9-9689-dcb9df207a17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Actor\IntroActor">
-      <UniqueIdentifier>{aa6a6de2-7fa1-4d35-800a-4c9cf6d0dd8b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Global">
-      <UniqueIdentifier>{38de4c7c-5322-42aa-8b68-493bf5f13c4a}</UniqueIdentifier>
+    <Filter Include="Intro">
+      <UniqueIdentifier>{ac9db29e-f407-4dd6-bf1e-29a5a4d83396}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

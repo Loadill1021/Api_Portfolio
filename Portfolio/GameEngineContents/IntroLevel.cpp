@@ -10,7 +10,7 @@ IntroLevel::~IntroLevel()
 
 void IntroLevel::Loading()
 {
-	this->CreateActor<IntroBackground>("IntroBacground",0);
+	CreateActor<IntroBackground>(0);
 }
 void IntroLevel::Update()
 {
