@@ -21,9 +21,18 @@ public:
 	GameEngineActor& operator=(const GameEngineActor& _Other) = delete;
 	GameEngineActor& operator=(GameEngineActor&& _Other) noexcept = delete;
 
+	inline GameEngineLevel* GetLevel()
+	{
+		return Level_;
+	}
+
 	inline float4 GetPosition()
 	{
 		return Position_;
+	}
+	inline float4 GetScale()
+	{
+		return Scale_;
 	}
 	inline void SetPosition(const float4 _Value)
 	{
@@ -71,11 +80,17 @@ public:
 		RenderPivot _PivotType = RenderPivot::CENTER, 
 		const float4& _PivotPos = { 0,0 });
 public:
-	std::list<GameEngineRenderer*>RenderList_;
+
 	GameEngineRenderer* CreateRenderer(const std::string& _Image,
 		RenderPivot _PivotType,/*=RenderPivot::CENTER 네모칸 기준 센터 위*/
 		const float4& _PivotPos/*={0,0}*/
 	);
+private:
+	//이터레이터
+	std::list<GameEngineRenderer*>::iterator StartRenderIter;
+	std::list<GameEngineRenderer*>::iterator EndRenderIter;
 
+	//그린다는 기능을 클래스로 
+	std::list<GameEngineRenderer*>RenderList_;
 };
 

@@ -17,14 +17,11 @@ GameEngineRenderer::GameEngineRenderer()
 GameEngineRenderer::~GameEngineRenderer() 
 {
 }
-void SetImageScale(const std::string& _Name)
+void GameEngineRenderer::SetImageScale(const std::string& _Name)
 {
 
 }
-void GameEngineRenderer::SetImageScale()
-{
 
-}
 void GameEngineRenderer::SetImage(const std::string& _Name)
 {
 	GameEngineImage* FindImage=GameEngineImageManager::GetInst()->Find("Idle.bmp");

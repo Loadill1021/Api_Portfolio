@@ -11,6 +11,7 @@
 class GameEngineImage;
 class GameEngineRenderer:public GameEngineActorSubObject
 {
+	friend GameEngineActor;
 public:
 	// constrcuter destructer
 	GameEngineRenderer();
@@ -35,10 +36,7 @@ public:
 	{
 		RenderPivot_ = _Pos;
 	}
-	inline void SetType(const RenderPivot& _Type)
-	{
-		PivotType_ = _Type;
-	}
+	
 	void SetImageScale(const std::string& _Name);
 	
 	inline void SetScale(const float4& _Scale)

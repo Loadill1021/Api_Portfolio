@@ -10,6 +10,9 @@ GameEngineActor::GameEngineActor()
 
 GameEngineActor::~GameEngineActor() 
 {
+	std::list<GameEngineRenderer*>::iterator StartIter = RenderList_.begin();
+	std::list<GameEngineRenderer*>::iterator EndIter = RenderList_.end();
+
 }
 void GameEngineActor::DebugRectRender()
 {
@@ -31,7 +34,7 @@ GameEngineRenderer* GameEngineActor::CreateRenderer(const std::string& _Image,
 	RenderList_.push_back(NewRenderer);
 	return NewRenderer;
 }
-GameEngineRenderer* CreateRendererToScale(const std::string& _Image, const float4& _Scale, RenderPivot _PivotType = RenderPivot::CENTER, const float4& _PivotPos = { 0,0 })
+GameEngineRenderer* GameEngineActor::CreateRendererToScale(const std::string& _Image, const float4& _Scale, RenderPivot _PivotType, const float4& _PivotPos)
 {
 	GameEngineRenderer* NewRenderer = new GameEngineRenderer();
 	NewRenderer->SetActor(this);
@@ -39,4 +42,7 @@ GameEngineRenderer* CreateRendererToScale(const std::string& _Image, const float
 	NewRenderer->SetScale(_Scale);
 	NewRenderer->SetPivot(_PivotPos);
 	NewRenderer->SetType(_PivotType);
+
+	RenderList_.push_back(NewRenderer);
+	return NewRenderer;
 }
