@@ -103,13 +103,15 @@ void GameEngineWindow::MessageLoop(void(*_InitFunction)(), void(*_LoopFunction)(
     MSG msg;
     while (WindowOn_)
     {
-        if(PeekMessage(&msg,nullptr,0,0,PM_REMOVE))
+        if(0!=PeekMessage(&msg,nullptr,0,0,PM_REMOVE))
         {
             {
                 TranslateMessage(&msg);
                 DispatchMessage(&msg);
             } 
         }
+        //윈도우가 일하지 않는 데드타임.
+        //여기서 무슨게임을 돌릴까요?
         if (nullptr==_LoopFunction)
         {
             continue;
@@ -119,8 +121,8 @@ void GameEngineWindow::MessageLoop(void(*_InitFunction)(), void(*_LoopFunction)(
 }
 void GameEngineWindow::SetWindowScaleAndPosition(float4 _Pos, float4 _Scale)
 {
-    RECT rc = { 0,0,_Scale.ix(),_Scale.iy()};
-    AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
+    RECT Rc = { 0,0,_Scale.ix(),_Scale.iy()};
+    AdjustWindowRect(&Rc, WS_OVERLAPPEDWINDOW, FALSE);
     Scale_ = _Scale;
-    //SetWindowPos(hWnd_, nullptr, _Pos.ix(), _Pos.iy());
+    SetWindowPos(hWnd_, nullptr, _Pos.ix(), _Pos.iy(),Rc.right-Rc.left,Rc.bottom-Rc.top,SWP_NOZORDER);
 }

@@ -43,6 +43,7 @@ public:
 	bool IsKey(const std::string& _Name);
 	bool IsDown(const std::string& _Name);
 	bool IsUp(const std::string& _Name);
+	bool IsFree(const std::string& _Name);
 	bool IsPress(const std::string& _Name);
 
 protected:

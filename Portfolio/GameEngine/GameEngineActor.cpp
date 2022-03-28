@@ -12,7 +12,15 @@ GameEngineActor::~GameEngineActor()
 {
 	std::list<GameEngineRenderer*>::iterator StartIter = RenderList_.begin();
 	std::list<GameEngineRenderer*>::iterator EndIter = RenderList_.end();
-
+	for (; StartIter != EndIter; ++StartIter)
+	{
+		if (nullptr == (*StartIter))
+		{
+			continue;
+		}
+		delete (*StartIter);
+		(*StartIter) = nullptr;
+	}
 }
 void GameEngineActor::DebugRectRender()
 {
@@ -45,4 +53,13 @@ GameEngineRenderer* GameEngineActor::CreateRendererToScale(const std::string& _I
 
 	RenderList_.push_back(NewRenderer);
 	return NewRenderer;
+}
+void GameEngineActor::Renderering()
+{
+	StartRenderIter = RenderList_.begin();
+	EndRenderIter = RenderList_.end();
+	for (; StartRenderIter != EndRenderIter; ++StartRenderIter)
+	{
+		(*StartRenderIter)->Render();
+	}
 }

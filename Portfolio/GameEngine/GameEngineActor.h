@@ -1,12 +1,13 @@
 #pragma once
-#include <GameEngineBase/GameEngineMath.h>
 #include <GameEngineBase/GameEngineNameObject.h>
+#include <GameEngineBase/GameEngineUpdateObject.h>
+#include <GameEngineBase/GameEngineMath.h>
 #include "GameEngineEnum.h"
 #include <list>
 // 설명 :
 class GameEngineRenderer;
 class GameEngineLevel;
-class GameEngineActor:public GameEngineNameObject
+class GameEngineActor:public GameEngineNameObject,public GameEngineUpdateObject
 {
 /////ActorBase
 public:
@@ -79,12 +80,12 @@ public:
 		const float4& _Scale, 
 		RenderPivot _PivotType = RenderPivot::CENTER, 
 		const float4& _PivotPos = { 0,0 });
-public:
 
 	GameEngineRenderer* CreateRenderer(const std::string& _Image,
 		RenderPivot _PivotType,/*=RenderPivot::CENTER 네모칸 기준 센터 위*/
 		const float4& _PivotPos/*={0,0}*/
 	);
+	void Renderering();
 private:
 	//이터레이터
 	std::list<GameEngineRenderer*>::iterator StartRenderIter;

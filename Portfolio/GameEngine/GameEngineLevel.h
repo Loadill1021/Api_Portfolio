@@ -40,11 +40,25 @@ protected:
 		StartActor->Start();
 		std::list<GameEngineActor*>& Group = AllActor_[_Order];
 		Group.push_back(NewActor);
-		return nullptr;
+		return NewActor;
+		//_Order 액터들이 돌아가는 순서를 의미하게 된다.
+		//insert와 find를 동시에 하게됩니다.
+		//std::map<int,std::list<GameEngineActor*>::iterator FindGroup
+		//=AllActor_.find(_Order);
+		//if (FindGroup == AllActor_.end())
+		//{
+		//	AllActor_.insert(std::make_pair(_Order, std::list<GameEngineActor*>()));
+		//	//이게 더빠릅니다.
+		//	AllActor_.insert(
+		//		std::map<int, std::list<GameEngineActor*>>::value_type(_Order, std::list<GameEngineActor*>()));
+		//	FindGroup = AllActor_.find(_Order);
+		//}
 	}
 private:
+	//std::vector로 관리하는게 더 좋다고 생각합니다.
 	std::map<int, std::list<GameEngineActor*>>AllActor_;
 	void ActorUpdate();
 	void ActorRender();
+	void ActorRelease();
 };
 
